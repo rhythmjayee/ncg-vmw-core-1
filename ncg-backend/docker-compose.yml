@@ -1,0 +1,34 @@
+version: '3'
+services:
+
+  backend:
+    build: '.'
+    command: go run main.go data.go
+    volumes:
+      - .:/var/www/app/:rw
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo_net
+  frontend:
+    build: './ui'
+    ports:
+      - "8081:8081"    
+    depends_on:
+      - mongo_net
+  mongo:
+      build: './Database'
+      restart: always
+      user: root
+      volumes:
+        - ./Database/dbdata/:/data/db/
+        # environment:
+        #     MONGO_INITDB_ROOT_USERNAME: admin
+        #     MONGO_INITDB_ROOT_PASSWORD: verysecur3ands3cret
+      ports: 
+        - 27017:27017
+      depends_on:
+        - mongo_net
+networks:
+  mongo_net:
+    driver: bridge
