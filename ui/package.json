@@ -16,7 +16,7 @@
     "eslint-plugin-vuejs-accessibility": "^1.2.0",
     "jquery": "^3.6.0",
     "sass-loader": "^13.0.2",
-    "vue": "^2.5.17",
+    "vue": "^3.0.0",
     "vue-axios": "^3.4.1",
     "vue-codemirror": "^4.0.6",
     "vue-moment": "^4.1.0",
